@@ -11,6 +11,13 @@
     --admin-card-bg: #ffffff;
 }
 
+.cta-button-premium, 
+.btn-save-premium,
+.btn-record-premium,
+.btn-submit-premium {
+    color: white !important;
+}
+
 .dashboard-layout {
     display: flex;
     min-height: 100vh;
@@ -636,6 +643,10 @@
         z-index: 2000;
         transition: left 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         width: var(--admin-sidebar-width);
+    }
+
+    .sidebar-minimize-toggle {
+        display: none !important;
     }
 
     .admin-sidebar.mobile-open {
