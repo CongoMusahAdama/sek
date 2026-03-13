@@ -659,13 +659,6 @@ const Navbar = ({ user }) => {
             Shop
           </Link>
           <Link
-            to="/collections"
-            className="mobile-nav-link"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Collections
-          </Link>
-          <Link
             to="/about"
             className="mobile-nav-link"
             onClick={() => setIsMobileMenuOpen(false)}
