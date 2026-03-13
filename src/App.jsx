@@ -65,7 +65,7 @@ const API_URL =
   import.meta.env.VITE_API_URL ||
   (window.location.origin.includes("localhost")
     ? "http://localhost:5000/api"
-    : "https://sekina-special.onrender.com/api");
+    : "https://sek-d05o.onrender.com/api");
 
 const apiRequest = async (endpoint, method = "GET", body = null) => {
   const token = localStorage.getItem("sekina_auth_token");
