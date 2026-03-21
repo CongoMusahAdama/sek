@@ -23,8 +23,7 @@ const ProductSchema = new mongoose.Schema({
     },
     stock: {
         type: Number,
-        required: [true, 'Please provide stock count'],
-        default: 0
+        default: 999
     },
     description: {
         type: String,
@@ -55,7 +54,11 @@ const ProductSchema = new mongoose.Schema({
     sku: {
         type: String,
         unique: true
-    }
+    },
+    extras: [{
+        name: { type: String, required: true },
+        price: { type: Number, required: true, default: 0 }
+    }]
 }, { timestamps: true });
 
 module.exports = mongoose.model('Product', ProductSchema);

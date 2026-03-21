@@ -33,7 +33,7 @@ const sendTokenResponse = (admin, statusCode, res) => {
 exports.login = async (req, res) => {
     try {
         const { identifier, password } = req.body;
-        console.log(`Login attempt for: ${identifier}`);
+        // console.log(`Login attempt for: ${identifier}`); // Removed for security
 
         // Find admin by email OR phone
         const admin = await Admin.findOne({
@@ -44,13 +44,13 @@ exports.login = async (req, res) => {
         }).select('+password');
 
         if (!admin) {
-            console.log(`Admin NOT found for identifier: ${identifier}`);
+            // console.log(`Admin NOT found for identifier: ${identifier}`); // Removed for security
             return res.status(401).json({ success: false, message: 'Invalid credentials. User not found.' });
         }
 
         // Check password
         const isMatch = await admin.matchPassword(password);
-        console.log(`Password match result: ${isMatch}`);
+        // console.log(`Password match result: ${isMatch}`); // Removed for security
 
         if (!isMatch) {
             return res.status(401).json({ success: false, message: 'Invalid credentials. Incorrect password.' });

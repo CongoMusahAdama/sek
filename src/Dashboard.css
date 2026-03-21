@@ -790,13 +790,13 @@
         justify-content: space-between;
         align-items: center;
         background: white;
-        padding: 1.25rem 1.5rem;
+        padding: 1rem 1.5rem;
         margin-bottom: 1.5rem;
         border-radius: 0 0 24px 24px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         z-index: 1500;
-        /* Lower than modal */
-        position: relative;
+        position: sticky;
+        top: 0;
     }
 
     .dashboard-grid {
@@ -865,13 +865,16 @@ body:has(.admin-modal-overlay) .admin-bottom-nav {
     .header-actions {
         width: 100%;
         display: flex;
+        gap: 0.75rem;
     }
 
     .header-actions button {
         flex: 1;
         justify-content: center;
-        padding: 0.75rem 1rem !important;
+        padding: 0.75rem 0.5rem !important;
         height: 44px;
+        font-size: 0.7rem !important;
+        white-space: nowrap;
     }
 
     .welcome-banner {
@@ -1160,5 +1163,196 @@ body:has(.admin-modal-overlay) .admin-bottom-nav {
         grid-template-columns: repeat(3, 1fr);
         gap: 0.5rem;
         margin-bottom: 1.5rem;
+    }
+}
+
+/* Proof Modal Styles */
+.proof-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200000;
+    padding: 2rem;
+    animation: adminFadeIn 0.3s ease;
+}
+
+.proof-modal-card {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.proof-modal-header {
+    padding: 1.5rem 2rem;
+    background: white;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.proof-modal-info h2 {
+    font-size: 1.25rem;
+    color: var(--brand-red);
+    margin-bottom: 0.15rem;
+}
+
+.proof-modal-info p {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.proof-modal-close {
+    background: #f1f5f9;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s;
+}
+
+.proof-modal-close:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+    transform: rotate(90deg);
+}
+
+.proof-modal-body {
+    padding: 1.5rem;
+    background: #f8fafc;
+}
+
+.proof-image-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #eee;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    max-height: 60vh;
+    display: flex;
+    justify-content: center;
+}
+
+.proof-image {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.proof-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.proof-image-container:hover .proof-image-overlay {
+    opacity: 1;
+}
+
+.zoom-btn {
+    background: white;
+    color: #1e293b;
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.proof-modal-footer {
+    padding: 1.5rem 2rem;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-context-brief {
+    display: flex;
+    gap: 2rem;
+}
+
+.context-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.context-item .label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.context-item .value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.view-proof-btn {
+    padding: 0.5rem 0.9rem;
+    border-radius: 10px;
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #dcfce7;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.view-proof-btn:hover {
+    background: #dcfce7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(22, 101, 52, 0.1);
+}
+
+@media (max-width: 640px) {
+    .proof-modal-card {
+        border-radius: 0;
+        height: 100vh;
+        max-width: 100vw;
+    }
+    .proof-modal-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .order-context-brief {
+        width: 100%;
+        justify-content: space-around;
     }
 }

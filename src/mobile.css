@@ -689,6 +689,30 @@
     display: flex !important;
     flex-direction: column !important;
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1) !important;
+    /* Override desktop grid */
+    grid-template-columns: unset !important;
+  }
+
+  /* On mobile: image stacks on top, then scrollable info below */
+  .modal-image-container {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    min-height: unset !important;
+    max-height: 45vw !important;
+    flex-shrink: 0 !important;
+  }
+
+  .modal-image-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .modal-scroll-area {
+    overflow-y: auto !important;
+    flex: 1 !important;
+    max-height: unset !important;
+    padding-bottom: 2rem !important;
   }
 
   /* Drag Handle for the sheet look */
